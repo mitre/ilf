@@ -1,7 +1,12 @@
-# MITRE Intermediate Log Format (ILF)
+# Table of contents
+1. [Introduction](#introduction)
+2. [ILF Record Structure](#structure)
+3. [Tools and Libraries](#tools)
+   
+# MITRE Intermediate Log Format (ILF)<a name="introduction"></a>
 For real-time analysis of cyber events, it is necessary to process event records from an event stream as quickly as possible to facilitate detection of adversary actions. Some techniques for speeding up the detection are partial interpretation of an event record, and applying regex to the event stream. [MITRE](https://www.mitre.org/) developed Intermediate Log Format (ILF) format to enable such techniques. 
 
-## ILF Record Structure
+## ILF Record Structure<a name="structure"></a>
 
 1. An ILF record (referred to simply as as “record” below) MUST have the following structure.
 ```
@@ -50,12 +55,20 @@ For real-time analysis of cyber events, it is necessary to process event records
           
 If the value of an attribute cannot be parsed as a String, Number, Array, Dictionary, or Time, an attempt will be made to parse it as an enum. A failure to parse may be flagged an error, or ignored.
 
-## ILF Translator Implementations
-1. [Sysmon XML to ILF Translator](https://github.com/mitre/event-xml-to-ilf)
-2. [OCSF events to ILF mapping rules](https://github.com/ocsf/examples/tree/main/encodings/ilf) and a prototype translator [OCSF events to ILF Translator](https://github.com/mitre/ocsf_ilf_translator)
-3. [ILF Translator Support Library](https://github.com/mitre/lib_ilf)
+## ILF Translators, Libraries, and Tools<a name="tools"></a>
+### Translators that parse raw events to ILF format
+1. [Sysmon XML to ILF Translator](https://github.com/mitre/event-xml-to-ilf). Also [see](https://github.com/mitre/sysmon-config)
+2. [Syslog to ILF Translator](https://github.com/mitre/syslog_to_ilf)
+3. [Tshark to ILF Translator](https://github.com/mitre/tshark_to_ilf)
+4. [Zeek to ILF](https://github.com/mitre/zeek_to_ilf)
+6. [OCSF events to ILF mapping rules](https://github.com/ocsf/examples/tree/main/encodings/ilf) and a prototype translator [OCSF events to ILF Translator](https://github.com/mitre/ocsf_ilf_translator)
 
-## Public Release Information
+### Support libraries and tools
+1. [ILF Translator Support Library](https://github.com/mitre/lib_ilf). Also [see](https://github.com/mitre/seal_lib)
+2. [Tool to replay ILF files to a redis stream](https://github.com/mitre/redis_publish_perf)
+3. [Tool to read ILF events from a redis channel](https://github.com/mitre/redis_subscribe)
+
+## Public Release Information<a name="release"></a>
 > [!NOTE]
 > Approved for Public Release; Distribution Unlimited. Public Release Case
 > Number 24-00845-18
